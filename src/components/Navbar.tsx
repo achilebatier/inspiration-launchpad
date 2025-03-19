@@ -1,11 +1,16 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code } from "lucide-react";
 import Logo from "./Logo";
 import { Button } from "@/components/ui/button";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onTutorialClick: () => void;
+  onCodeClick: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onTutorialClick, onCodeClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,29 +35,16 @@ const Navbar: React.FC = () => {
         <Logo size="md" />
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <motion.a 
-            href="#features"
-            className="text-foreground/80 hover:text-primary transition-colors"
+        <nav className="hidden md:flex items-center space-x-4">
+          <motion.button 
+            className="text-foreground/80 hover:text-primary transition-colors flex items-center gap-2"
             whileHover={{ y: -2 }}
+            onClick={onCodeClick}
           >
-            Features
-          </motion.a>
-          <motion.a 
-            href="#tutorial"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            whileHover={{ y: -2 }}
-          >
-            Tutorial
-          </motion.a>
-          <motion.a 
-            href="#code"
-            className="text-foreground/80 hover:text-primary transition-colors"
-            whileHover={{ y: -2 }}
-          >
-            Code
-          </motion.a>
-          <Button className="relative overflow-hidden group">
+            <Code size={20} />
+            <span>Get Script</span>
+          </motion.button>
+          <Button className="relative overflow-hidden group" onClick={onTutorialClick}>
             <span className="relative z-10">Get Started</span>
             <span className="absolute inset-0 bg-gradient-to-r from-primary/80 to-purple-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </Button>
@@ -78,42 +70,33 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="container mx-auto px-4 py-6 flex flex-col space-y-6">
-              <motion.a 
-                href="#features"
-                className="text-lg text-foreground/80 hover:text-primary transition-colors"
+              <motion.button 
+                className="text-lg text-foreground/80 hover:text-primary transition-colors flex items-center gap-2"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  onCodeClick();
+                }}
               >
-                Features
-              </motion.a>
-              <motion.a 
-                href="#tutorial"
-                className="text-lg text-foreground/80 hover:text-primary transition-colors"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                onClick={() => setIsOpen(false)}
-              >
-                Tutorial
-              </motion.a>
-              <motion.a 
-                href="#code"
-                className="text-lg text-foreground/80 hover:text-primary transition-colors"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                onClick={() => setIsOpen(false)}
-              >
-                Code
-              </motion.a>
+                <Code size={20} />
+                <span>Get Script</span>
+              </motion.button>
               <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.2 }}
               >
-                <Button className="w-full">Get Started</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => {
+                    setIsOpen(false);
+                    onTutorialClick();
+                  }}
+                >
+                  Get Started
+                </Button>
               </motion.div>
             </div>
           </motion.div>

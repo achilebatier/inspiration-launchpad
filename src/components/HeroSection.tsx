@@ -5,6 +5,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const HeroSection: React.FC = () => {
+  const scrollToTutorial = () => {
+    const tutorialSection = document.getElementById("tutorial");
+    tutorialSection?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       {/* Background Elements */}
@@ -44,11 +49,11 @@ const HeroSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <Button size="lg" className="group">
+              <Button size="lg" className="group" onClick={scrollToTutorial}>
                 Get Started
                 <ArrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform" size={18} />
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" onClick={scrollToTutorial}>
                 Learn More
               </Button>
             </motion.div>
@@ -63,8 +68,12 @@ const HeroSection: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg blur-xl"></div>
               <div className="glass-card rounded-xl p-6 relative">
-                <div className="aspect-video w-full bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center">
-                  <p className="text-xl font-medium text-foreground/80">Your App Preview</p>
+                <div className="aspect-video w-full bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b"
+                    alt="Social Media Analytics Dashboard" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

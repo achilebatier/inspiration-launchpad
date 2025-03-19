@@ -1,9 +1,7 @@
-
 import React, { useRef } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import Footer from "@/components/Footer";
-import Tutorial from "@/components/Tutorial";
 import { motion } from "framer-motion";
 import { PlatformSelector } from "@/components/PlatformSelector";
 import CodeBlock from "@/components/CodeBlock";
@@ -71,19 +69,6 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
           <div className="noise"></div>
           
           <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              className="text-center mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true, margin: "-100px" }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-              <p className="text-lg text-foreground/70 max-w-xl mx-auto">
-                Follow these simple steps to find out who isn't following you back.
-              </p>
-            </motion.div>
-            
             <Tabs defaultValue="instagram" className="w-full max-w-5xl mx-auto">
               <div className="flex justify-center mb-8">
                 <TabsList>

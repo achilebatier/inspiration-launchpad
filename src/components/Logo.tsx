@@ -1,7 +1,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Rocket } from "lucide-react";
+import { Navigation } from "lucide-react";
 
 interface LogoProps {
   size?: "sm" | "md" | "lg";
@@ -32,7 +32,7 @@ const Logo: React.FC<LogoProps> = ({ size = "md", className }) => {
         }}
         className="text-primary"
       >
-        <Rocket size={size === "lg" ? 28 : size === "md" ? 24 : 20} />
+        <Navigation size={size === "lg" ? 28 : size === "md" ? 24 : 20} />
       </motion.div>
       <span className="gradient-text">NotFollowing</span>
     </motion.div>

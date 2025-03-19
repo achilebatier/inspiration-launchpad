@@ -6,8 +6,44 @@ import FeaturesSection from "@/components/FeaturesSection";
 import Footer from "@/components/Footer";
 import Tutorial from "@/components/Tutorial";
 import { motion } from "framer-motion";
+import { PlatformSelector } from "@/components/PlatformSelector";
+import CodeBlock from "@/components/CodeBlock";
+import { usePlatform } from "@/contexts/PlatformContext";
 
 const Index: React.FC = () => {
+  const { platform } = usePlatform();
+  
+  // Script content based on selected platform
+  const getScriptContent = () => {
+    if (platform === "instagram") {
+      return `// Instagram Script
+// Copy and paste this into your browser console while on Instagram
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+(async function() {
+  console.log("Starting Instagram follower analysis...");
+  
+  // Code for Instagram follower analysis
+  // This is a sample script
+  
+  console.log("Analysis complete!");
+})();`;
+    } else {
+      return `// Twitter Script
+// Copy and paste this into your browser console while on Twitter
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+(async function() {
+  console.log("Starting Twitter follower analysis...");
+  
+  // Code for Twitter follower analysis
+  // This is a sample script
+  
+  console.log("Analysis complete!");
+})();`;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -59,9 +95,13 @@ const Index: React.FC = () => {
             <p className="text-lg text-foreground/70 max-w-xl mx-auto">
               Copy the code below and follow the instructions in the tutorial.
             </p>
+            
+            <div className="mt-6 flex justify-center">
+              <PlatformSelector className="mb-8" />
+            </div>
           </motion.div>
           
-          {/* The code block component would be rendered here */}
+          <CodeBlock code={getScriptContent()} language="javascript" className="max-w-4xl mx-auto" />
         </div>
       </section>
       

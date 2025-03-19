@@ -1,8 +1,9 @@
+
 import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
-import { Footer } from "@/components/Footer";
+import Footer from "@/components/Footer";
 import Tutorial from "@/components/Tutorial";
 import { motion } from "framer-motion";
 
